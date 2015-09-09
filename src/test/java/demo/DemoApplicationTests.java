@@ -1,5 +1,6 @@
 package demo;
 
+import demo.application.DemoApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
