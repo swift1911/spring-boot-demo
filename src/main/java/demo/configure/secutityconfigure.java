@@ -14,7 +14,7 @@ public class secutityconfigure extends WebSecurityConfigurerAdapter {
     public void init(WebSecurity web) {
         web.ignoring();
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").authorizeRequests().anyRequest().authenticated();

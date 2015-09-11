@@ -1,9 +1,6 @@
 package demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -14,15 +11,15 @@ import java.io.Serializable;
 public class role_permissions implements Serializable {
 
     @Id
-    @Column
-    private int role_ID;
+    @Column(nullable = false)
+    private int roleid;
 
-    public int getRole_ID() {
-        return role_ID;
+    public int getRoleid() {
+        return roleid;
     }
 
-    public void setRole_ID(int role_ID) {
-        this.role_ID = role_ID;
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
     }
 
     public int getPermissions_ID() {
@@ -33,7 +30,6 @@ public class role_permissions implements Serializable {
         this.permissions_ID = permissions_ID;
     }
 
-    @Id
-    @Column
+    @Column(nullable = false)
     private int permissions_ID;
 }
