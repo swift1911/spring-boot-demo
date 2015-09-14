@@ -16,13 +16,12 @@ public class UserController {
     public final UserService userService;
 
     @Autowired
-    public UserController(UserService userService){
-        this.userService=userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping("/user/{id}")
-    public User getUserById(@PathVariable String id)
-    {
+    public User getUserById(@PathVariable String id) {
         return userService.getUserById(Integer.valueOf(id));
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import demo.service.impl.role;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by swift on 15/9/9.
@@ -35,7 +36,7 @@ public class permissionController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public List<role_permissions> getByPermissionId(@PathVariable String id) {
+    public Set<role_permissions> getByPermissionId(@PathVariable String id) {
         //return null;
         return roleService.getById(Integer.valueOf(id));
     }

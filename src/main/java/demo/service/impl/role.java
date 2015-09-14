@@ -8,21 +8,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 /**
  * Created by swift on 15/9/9.
  */
 @Service
-public class role implements Irole{
+public class role implements Irole {
 
     private final roleRepository rolerepository;
 
     @Autowired
-    public role(roleRepository rolerepository){
-        this.rolerepository=rolerepository;
+    public role(roleRepository rolerepository) {
+        this.rolerepository = rolerepository;
     }
+
     @Override
-    public List<role_permissions> getById(int role_ID)
-    {
-        return rolerepository.findByroleid(role_ID);
+    public Set<role_permissions> getById(int role_ID) {
+        return rolerepository.findByRoleid(role_ID);
     }
 }
