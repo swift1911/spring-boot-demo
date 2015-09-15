@@ -1,17 +1,9 @@
 package demo.core;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-import javax.jms.Destination;
 
 
 /**
@@ -21,25 +13,19 @@ import javax.jms.Destination;
 @Configuration
 public class activemqInit {
 
-    private JmsTemplate jmsTemplate;
-    
-    public void sendMessage(Destination destination, final String message) {
-        System.out.println("---------------生产者发送消息-----------------");
-        System.out.println("---------------生产者发了一个消息：" + message);
-        jmsTemplate.send(destination, new MessageCreator() {
-            public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage(message);
-            }
-        });
+    public RabbitTemplate getRabbitTemplate() {
+        return rabbitTemplate;
     }
 
-    public JmsTemplate getJmsTemplate() {
-        return jmsTemplate;
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Resource
-    public void setJmsTemplate(JmsTemplate jmsTemplate) {
-        this.jmsTemplate = jmsTemplate;
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
+    public activemqInit() {
+
     }
 
 }
